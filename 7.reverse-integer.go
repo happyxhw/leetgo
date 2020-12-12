@@ -3,9 +3,9 @@
  *
  * [7] Reverse Integer
  */
+package leetgo
 
 // @lc code=start
-package leetgo
 
 func reverse(x int) int {
 	var res int

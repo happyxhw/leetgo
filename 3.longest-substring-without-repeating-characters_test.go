@@ -3,8 +3,6 @@
  *
  * [3] Longest Substring Without Repeating Characters
  */
-
-// @lc code=start
 package leetgo
 
 import (
@@ -13,6 +11,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+// @lc code=start
 func Test_lengthOfLongestSubstring(t *testing.T) {
 	assert := assert.New(t)
 	tests := []struct {
