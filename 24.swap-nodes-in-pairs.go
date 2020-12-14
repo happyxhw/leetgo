@@ -20,7 +20,7 @@ func swapPairs1(head *ListNode) *ListNode {
 	if head == nil || head.Next == nil {
 		return head
 	}
-	cur := swapPairs(head.Next.Next)
+	cur := swapPairs1(head.Next.Next)
 	t := head.Next
 	head.Next = cur
 	t.Next = head
@@ -29,7 +29,7 @@ func swapPairs1(head *ListNode) *ListNode {
 }
 
 // 不使用递归
-func swapPairs(head *ListNode) *ListNode {
+func swapPairs2(head *ListNode) *ListNode {
 	pre := &ListNode{}
 	pre.Next = head
 	cur := pre
@@ -44,6 +44,25 @@ func swapPairs(head *ListNode) *ListNode {
 	}
 
 	return pre.Next
+}
+
+func swapPairs(head *ListNode) *ListNode {
+	preHead := &ListNode{}
+	preHead.Next = head
+
+	pre, cur := preHead, head
+
+	for cur != nil && cur.Next != nil {
+		t := cur.Next
+		cur.Next = cur.Next.Next
+		t.Next = cur
+		pre.Next = t
+
+		pre = cur
+		cur = cur.Next
+	}
+
+	return preHead.Next
 }
 
 // @lc code=end
