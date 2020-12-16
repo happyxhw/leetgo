@@ -32,7 +32,7 @@ func postorderTraversal(root *TreeNode) []int {
 			if p.Right != nil && p.Right != post {
 				p = p.Right
 			} else {
-				stack = stack[0 : n-1]
+				stack = stack[:n-1]
 				res = append(res, p.Val)
 				post = p
 				p = nil
