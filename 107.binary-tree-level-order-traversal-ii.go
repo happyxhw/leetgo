@@ -30,6 +30,7 @@ func helper107(root *TreeNode, res [][]int, depth int) ([][]int, int) {
 
 	res, _ = helper107(root.Left, res, depth+1)
 	res, _ = helper107(root.Right, res, depth+1)
+	return res, 1
 }
 
 // @lc code=end
