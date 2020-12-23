@@ -18,7 +18,7 @@ func solve(board [][]byte, x, y int) bool {
 			}
 			var s byte
 			for s = '1'; s <= '9'; s++ {
-				if isValid(board, i, j, s) {
+				if isValid2(board, i, j, s) {
 					board[i][j] = s
 					if solve(board, i, j+1) {
 						return true
@@ -33,7 +33,7 @@ func solve(board [][]byte, x, y int) bool {
 	return true
 }
 
-func isValid(board [][]byte, i, j int, s byte) bool {
+func isValid2(board [][]byte, i, j int, s byte) bool {
 	x := 3 * (i / 3)
 	y := 3 * (j / 3)
 	for k := 0; k < 9; k++ {
