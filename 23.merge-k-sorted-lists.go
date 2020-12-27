@@ -27,10 +27,10 @@ func helper023(lists []*ListNode, start, end int) *ListNode {
 	mid := (start + end) / 2
 	left := helper023(lists, start, mid)
 	right := helper023(lists, mid+1, end)
-	return merge(left, right)
+	return merge2(left, right)
 }
 
-func merge(l1 *ListNode, l2 *ListNode) *ListNode {
+func merge2(l1 *ListNode, l2 *ListNode) *ListNode {
 	preHead := &ListNode{}
 	cur := preHead
 	for l1 != nil && l2 != nil {
