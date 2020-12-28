@@ -43,47 +43,12 @@
  */
 package leetgo
 
-// @lc code=start
-/**
- * Definition for singly-linked list.
- * type ListNode struct {
- *     Val int
- *     Next *ListNode
- * }
- */
-func rotateRight(head *ListNode, k int) *ListNode {
-	if head == nil || k == 0 {
-		return head
-	}
-	preHead := &ListNode{}
-	preHead.Next = head
+import (
+	"fmt"
+	"testing"
+)
 
-	var n int
-	cur := head
-	for cur != nil {
-		n++
-		cur = cur.Next
-	}
-	k = k % n
-	if k == 0 {
-		return head
-	}
-
-	slow, fast := head, head
-	for k > 0 {
-		fast = fast.Next
-		k--
-	}
-	for fast != nil && fast.Next != nil {
-		fast = fast.Next
-		slow = slow.Next
-	}
-	t := slow.Next
-	slow.Next = nil
-	fast.Next = preHead.Next
-	preHead.Next = t
-
-	return preHead.Next
+func Test_rotateRight(t *testing.T) {
+	x := &ListNode{Val: 1}
+	fmt.Println(rotateRight(x, 1))
 }
-
-// @lc code=end

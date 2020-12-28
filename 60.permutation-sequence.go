@@ -53,21 +53,34 @@ package leetgo
 
 // @lc code=start
 func getPermutation(n int, k int) string {
-	_ = helper060(1, k, n, []int{})
-	return ""
+	used := make([]bool, n)
+	res, _ := helper060(1, k, n, []byte{}, used)
+	return string(res)
 }
 
-func helper060(start, m, n int, s []int) []int {
-	// if start > n {
-	// 	fmt.Println(s)
-	// 	return s
-	// }
-	for i := start; i <= n; i++ {
-		s = append(s, i)
-		helper060(start+1, m, n, s)
-		s = s[:len(s)-1]
+func helper060(start, m, n int, s []byte, used []bool) ([]byte, int) {
+	if start > n {
+		if m == 1 {
+			return s, m
+		}
+		m--
+		return nil, m
 	}
-	return s
+	for i := 1; i <= n; i++ {
+		if used[i-1] {
+			continue
+		}
+		used[i-1] = true
+		s = append(s, byte(i)+'0')
+		var res []byte
+		res, m = helper060(start+1, m, n, s, used)
+		if len(res) > 0 {
+			return res, m
+		}
+		s = s[:len(s)-1]
+		used[i-1] = false
+	}
+	return nil, m
 }
 
 // @lc code=end
