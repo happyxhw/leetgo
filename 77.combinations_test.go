@@ -52,26 +52,11 @@
  */
 package leetgo
 
-// @lc code=start
-func combine(n int, k int) [][]int {
-	return helper077(1, k, n, [][]int{}, []int{})
-}
+import (
+	"fmt"
+	"testing"
+)
 
-func helper077(start, k, n int, res [][]int, path []int) [][]int {
-	if k == 0 {
-		t := make([]int, 0, k)
-		t = append(t, path...)
-		res = append(res, t)
-		return res
-	}
-	for i := start; i <= n; i++ {
-		path = append(path, i)
-		k--
-		res = helper077(i+1, k, n, res, path)
-		k++
-		path = path[:len(path)-1]
-	}
-	return res
+func Test_combine(t *testing.T) {
+	fmt.Println(combine(4, 2))
 }
-
-// @lc code=end
