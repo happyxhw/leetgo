@@ -58,44 +58,16 @@
  */
 package leetgo
 
-// @lc code=start
-func exist(board [][]byte, word string) bool {
-	if len(board) == 0 || len(board[0]) == 0 {
-		return false
-	}
-	m, n := len(board)-1, len(board[0])-1
+import (
+	"fmt"
+	"testing"
+)
 
-	visited := make([][]bool, m+1)
-	for i := range visited {
-		visited[i] = make([]bool, n+1)
+func Test_exist(t *testing.T) {
+	d := [][]byte{
+		{'A', 'B', 'C', 'E'},
+		{'S', 'F', 'C', 'S'},
+		{'A', 'D', 'E', 'E'},
 	}
-
-	for i := 0; i <= m; i++ {
-		for j := 0; j <= n; j++ {
-			if helper079(board, word, i, j, m, n, 0, visited) {
-				return true
-			}
-		}
-	}
-
-	return false
+	fmt.Println(exist(d, "ABCCED"))
 }
-
-func helper079(board [][]byte, word string, i, j, m, n, idx int, visited [][]bool) bool {
-	if idx == len(word) {
-		return true
-	}
-	if i < 0 || i > m || j < 0 || j > n || visited[i][j] || board[i][j] != word[idx] {
-		return false
-	}
-	visited[i][j] = true
-	res := helper079(board, word, i-1, j, m, n, idx+1, visited) ||
-		helper079(board, word, i+1, j, m, n, idx+1, visited) ||
-		helper079(board, word, i, j-1, m, n, idx+1, visited) ||
-		helper079(board, word, i, j+1, m, n, idx+1, visited)
-	visited[i][j] = false
-
-	return res
-}
-
-// @lc code=end

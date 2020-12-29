@@ -6,7 +6,7 @@
 package leetgo
 
 // @lc code=start
-func removeDuplicates(nums []int) int {
+func removeDuplicates_1(nums []int) int {
 	if len(nums) < 2 {
 		return len(nums)
 	}

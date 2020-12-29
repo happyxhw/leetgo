@@ -6,7 +6,7 @@
 package leetgo
 
 // @lc code=start
-func search(nums []int, target int) int {
+func search_0(nums []int, target int) int {
 	start, end := 0, len(nums)-1
 	for start <= end {
 		mid := (start + end) / 2
