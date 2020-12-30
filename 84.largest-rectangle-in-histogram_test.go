@@ -41,36 +41,12 @@
  */
 package leetgo
 
-// @lc code=start
-// 单调栈
-func largestRectangleArea(heights []int) int {
-	var res int
-	var stack []int
-	// 保证可以正常结束
-	heights = append(heights, 0)
+import (
+	"fmt"
+	"testing"
+)
 
-	for i := 0; i < len(heights); {
-		// 保持单调
-		if len(stack) == 0 || heights[stack[len(stack)-1]] < heights[i] {
-			stack = append(stack, i)
-			i++
-		} else {
-			pre := stack[len(stack)-1]
-			// 不断出栈，直到 i 满足单调性，将 i 推入栈
-			stack = stack[:len(stack)-1]
-
-			width := i
-			if len(stack) > 0 {
-				width = i - stack[len(stack)-1] - 1
-			}
-			t := heights[pre] * width
-			if t > res {
-				res = t
-			}
-
-		}
-	}
-	return res
+func Test_largestRectangleArea(t *testing.T) {
+	x := []int{1, 2, 3, 4, 2}
+	fmt.Println(largestRectangleArea(x))
 }
-
-// @lc code=end
