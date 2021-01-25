@@ -34,13 +34,8 @@ func isMatch(s string, p string) bool {
 				// xxxxxBA -> yyyyy*
 			} else if j >= 2 && p[j-1] == '*' {
 				switch {
-				// xxxxxBA -> yyyyyA* || xxxxxBA -> yyyyy.*:
-				// [xxxxxB]A -> [yyyyy]A*: dp[i-1][j-2]  *=0
-				// [xxxxxB]A -> [yyyyyA*]A: dp[i-1][j-2] *=1
-				// [xxxxxBA] -> [yyyyy]A*: dp[i-1][j-2]  *=0
 				case p[j-2] == s[i-1] || p[j-2] == '.':
-					dp[i][j] = dp[i-1][j-2] || dp[i-1][j] || dp[i][j-2] || dp[i][j-1]
-				// xxxxxBA -> yyyyyC*: dp[i][j-2]
+					dp[i][j] = dp[i-1][j-2] || dp[i-1][j] || dp[i][j-2]
 				default:
 					dp[i][j] = dp[i][j-2]
 				}

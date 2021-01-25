@@ -37,7 +37,7 @@ package leetgo
  *     Next *ListNode
  * }
  */
-func partition(head *ListNode, x int) *ListNode {
+func partition_0(head *ListNode, x int) *ListNode {
 	if head == nil {
 		return head
 	}
