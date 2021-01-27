@@ -7,10 +7,10 @@ package leetgo
 
 // @lc code=start
 func solveSudoku(board [][]byte) {
-	solve(board, 0, 0)
+	solve1(board, 0, 0)
 }
 
-func solve(board [][]byte, x, y int) bool {
+func solve1(board [][]byte, x, y int) bool {
 	for i := x; i < 9; i++ {
 		for j := y; j < 9; j++ {
 			if board[i][j] != '.' {
@@ -20,7 +20,7 @@ func solve(board [][]byte, x, y int) bool {
 			for s = '1'; s <= '9'; s++ {
 				if isValid2(board, i, j, s) {
 					board[i][j] = s
-					if solve(board, i, j+1) {
+					if solve1(board, i, j+1) {
 						return true
 					}
 					board[i][j] = '.'

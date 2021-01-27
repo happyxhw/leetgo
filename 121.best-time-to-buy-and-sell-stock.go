@@ -44,7 +44,7 @@
 package leetgo
 
 // @lc code=start
-func maxProfit(prices []int) int {
+func maxProfit_0(prices []int) int {
 	if len(prices) == 0 {
 		return 0
 	}
