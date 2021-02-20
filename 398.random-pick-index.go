@@ -48,7 +48,7 @@ type Solution struct {
 	pool []int
 }
 
-func Constructor(nums []int) Solution {
+func Constructor_0(nums []int) Solution {
 	return Solution{pool: nums}
 }
 
@@ -62,7 +62,6 @@ func (this *Solution) Pick(target int) int {
 		cnt++
 		if rand.Int()%cnt == 0 {
 			res = i
-			break
 		}
 	}
 	return res
