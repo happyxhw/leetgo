@@ -64,7 +64,7 @@ type MedianFinder struct {
 }
 
 /** initialize your data structure here. */
-func Constructor() MedianFinder {
+func Constructor_295() MedianFinder {
 	return MedianFinder{}
 }
 

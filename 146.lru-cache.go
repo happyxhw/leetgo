@@ -89,7 +89,7 @@ type LRUCache struct {
 	Capacity int
 }
 
-func Constructor(capacity int) LRUCache {
+func Constructor_146(capacity int) LRUCache {
 	lru := LRUCache{
 		Cache:    make(map[int]*DLinkedNode),
 		Head:     &DLinkedNode{},

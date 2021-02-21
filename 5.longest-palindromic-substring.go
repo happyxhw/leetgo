@@ -8,6 +8,28 @@ package leetgo
 // 1 2 3 3 2 1
 // @lc code=start
 func longestPalindrome(s string) string {
+	n := len(s)
+	dp := make([][]int, n)
+	for i := 0; i < n; i++ {
+		dp[i] = make([]int, n)
+	}
+	var left, right int
+	for j := 0; j < n; j++ {
+		dp[j][j] = 1
+		for i := 0; i < j; i++ {
+			if s[i] == s[j] && (j-i < 2 || dp[i+1][j-1] > 0) {
+				dp[i][j] = 1
+			}
+			if dp[i][j] > 0 && (right-left < j-i) {
+				left = i
+				right = j
+			}
+		}
+	}
+
+	return s[left : right+1]
+}
+func longestPalindrome_1(s string) string {
 	var maxLen int
 	var index int
 	for i := range s {
