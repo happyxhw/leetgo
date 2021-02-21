@@ -48,7 +48,7 @@ type Solution struct {
 	pool []int
 }
 
-func Constructor(nums []int) Solution {
+func Constructor_398(nums []int) Solution {
 	return Solution{pool: nums}
 }
 
