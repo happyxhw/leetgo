@@ -62,7 +62,6 @@ func (this *Solution) Pick(target int) int {
 		cnt++
 		if rand.Int()%cnt == 0 {
 			res = i
-			break
 		}
 	}
 	return res
