@@ -44,25 +44,25 @@ package leetgo
 // @lc code=start
 func minWindow(s string, t string) string {
 	var res string
-	tmpMap := make([]int, 128)
+	cnt := make([]int, 128)
 	for i := range t {
-		tmpMap[t[i]]++
+		cnt[t[i]]++
 	}
 	total, j, minLen := len(t), 0, 1<<31
 	for i := 0; i < len(s); i++ {
-		if tmpMap[s[i]] > 0 {
+		if cnt[s[i]] > 0 {
 			total--
 		}
-		tmpMap[s[i]]--
+		cnt[s[i]]--
 		for total == 0 {
 			if minLen > i-j+1 {
 				minLen = i - j + 1
 				res = s[j : j+minLen]
 			}
-			if tmpMap[s[j]]+1 > 0 {
+			if cnt[s[j]] == 0 {
 				total++
 			}
-			tmpMap[s[j]]++
+			cnt[s[j]]++
 			j++
 		}
 
