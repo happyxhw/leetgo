@@ -11,6 +11,6 @@ func Test_rotate(t *testing.T) {
 		{4, 5, 6},
 		{7, 8, 9},
 	}
-	rotate(arg)
+	rotate_48(arg)
 	fmt.Println(arg)
 }

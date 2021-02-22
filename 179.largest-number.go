@@ -60,7 +60,6 @@
 package leetgo
 
 import (
-	"fmt"
 	"sort"
 	"strconv"
 )
@@ -71,8 +70,10 @@ func largestNumber(nums []int) string {
 		return compare(nums[i], nums[j])
 	})
 	var res string
-	fmt.Println(nums)
-	for _, n := range nums {
+	for i, n := range nums {
+		if i == 0 && n == 0 {
+			return "0"
+		}
 		res += strconv.FormatInt(int64(n), 10)
 	}
 	return res
@@ -81,16 +82,22 @@ func largestNumber(nums []int) string {
 func compare(x, y int) bool {
 	xx, yy := x, y
 	t1, t2 := x, y
-	for xx != 0 {
+	for {
 		xx = xx / 10
 		t2 *= 10
+		if xx == 0 {
+			break
+		}
 	}
-	for yy != 0 {
+	for {
 		yy = yy / 10
 		t1 *= 10
+		if yy == 0 {
+			break
+		}
 	}
 	t1, t2 = t1+y, t2+x
-	fmt.Println(x, y, t1, t2)
+	// fmt.Println(x, y, t1, t2)
 	return t1 > t2
 }
 

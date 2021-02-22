@@ -64,11 +64,11 @@ import (
 	"testing"
 )
 
-func Test_compare(t *testing.T) {
-	fmt.Println(compare(0, 9))
+func Test_largestNumber(t *testing.T) {
+	x := []int{0, 0}
+	fmt.Println(largestNumber(x))
 }
 
-func Test_largestNumber(t *testing.T) {
-	x := []int{0, 9, 8, 7, 6, 5, 4, 3, 2, 1}
-	fmt.Println(largestNumber(x))
+func Test_compare(t *testing.T) {
+	fmt.Println(compare(0, 0))
 }

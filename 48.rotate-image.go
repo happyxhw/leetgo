@@ -6,7 +6,7 @@
 package leetgo
 
 // @lc code=start
-func rotate(matrix [][]int) {
+func rotate_48(matrix [][]int) {
 	if len(matrix) == 0 {
 		return
 	}
