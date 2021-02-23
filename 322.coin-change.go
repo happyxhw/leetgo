@@ -74,25 +74,18 @@ func coinChange(coins []int, amount int) int {
 	dp := make([]int, amount+1)
 	for i := 1; i <= amount; i++ {
 		dp[i] = amount + 1
-	}
-	for i := 1; i <= amount; i++ {
 		for j := 0; j < len(coins); j++ {
-			if i >= coins[j] {
-				dp[i] = min322(dp[i], dp[i-coins[j]]+1)
+			if i-coins[j] >= 0 {
+				if dp[i] > dp[i-coins[j]]+1 {
+					dp[i] = dp[i-coins[j]] + 1
+				}
 			}
 		}
 	}
-	if dp[amount] > amount {
+	if dp[amount] == amount+1 {
 		return -1
 	}
 	return dp[amount]
-}
-
-func min322(x, y int) int {
-	if x < y {
-		return x
-	}
-	return y
 }
 
 // @lc code=end
