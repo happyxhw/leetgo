@@ -15,29 +15,24 @@ package leetgo
  * }
  */
 func postorderTraversal(root *TreeNode) []int {
-	var post *TreeNode
-
-	res := []int{}
-	stack := []*TreeNode{}
-
+	var res []int
+	var stack []*TreeNode
 	p := root
 
 	for p != nil || len(stack) > 0 {
 		if p != nil {
+			res = append(res, p.Val)
 			stack = append(stack, p)
-			p = p.Left
+			p = p.Right
 		} else {
-			n := len(stack)
-			p = stack[n-1]
-			if p.Right != nil && p.Right != post {
-				p = p.Right
-			} else {
-				stack = stack[:n-1]
-				res = append(res, p.Val)
-				post = p
-				p = nil
-			}
+			top := stack[len(stack)-1]
+			stack = stack[:len(stack)-1]
+			p = top.Left
 		}
+	}
+
+	for i, j := 0, len(res)-1; i < j; i, j = i+1, j-1 {
+		res[i], res[j] = res[j], res[i]
 	}
 
 	return res

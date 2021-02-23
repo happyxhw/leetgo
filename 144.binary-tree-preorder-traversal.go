@@ -15,21 +15,31 @@ package leetgo
  * }
  */
 func preorderTraversal(root *TreeNode) []int {
-	var res []int
-	var stack []*TreeNode
-	p := root
+	// var res []int
+	// var stack []*TreeNode
+	// p := root
 
-	for p != nil || len(stack) > 0 {
-		if p != nil {
-			res = append(res, p.Val)
-			stack = append(stack, p)
-			p = p.Left
-		} else {
-			top := stack[len(stack)-1]
-			stack = stack[:len(stack)-1]
-			p = top.Right
-		}
+	// for p != nil || len(stack) > 0 {
+	// 	if p != nil {
+	// 		res = append(res, p.Val)
+	// 		stack = append(stack, p)
+	// 		p = p.Left
+	// 	} else {
+	// 		top := stack[len(stack)-1]
+	// 		stack = stack[:len(stack)-1]
+	// 		p = top.Right
+	// 	}
+	// }
+	return helper144(root, []int{})
+}
+
+func helper144(root *TreeNode, res []int) []int {
+	if root == nil {
+		return res
 	}
+	res = append(res, root.Val)
+	res = helper144(root.Left, res)
+	res = helper144(root.Right, res)
 	return res
 }
 

@@ -71,18 +71,21 @@ package leetgo
 
 // @lc code=start
 func coinChange(coins []int, amount int) int {
+	if len(coins) == 0 {
+		return 0
+	}
 	dp := make([]int, amount+1)
 	for i := 1; i <= amount; i++ {
-		dp[i] = amount + 1
-		for j := 0; j < len(coins); j++ {
-			if i-coins[j] >= 0 {
-				if dp[i] > dp[i-coins[j]]+1 {
-					dp[i] = dp[i-coins[j]] + 1
+		dp[i] = 1 << 32
+		for _, c := range coins {
+			if i-c >= 0 {
+				if dp[i] > dp[i-c]+1 {
+					dp[i] = dp[i-c] + 1
 				}
 			}
 		}
 	}
-	if dp[amount] == amount+1 {
+	if dp[amount] == 1<<32 {
 		return -1
 	}
 	return dp[amount]
