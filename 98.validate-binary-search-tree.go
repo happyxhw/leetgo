@@ -41,12 +41,12 @@ func isValidBST0(root *TreeNode) bool {
 
 // 递归
 func isValidBST(root *TreeNode) bool {
-	var pre *int
+	var pre *TreeNode
 	_, ok := helperValidBST(root, pre)
 	return ok
 }
 
-func helperValidBST(root *TreeNode, pre *int) (*int, bool) {
+func helperValidBST(root, pre *TreeNode) (*TreeNode, bool) {
 	if root == nil {
 		return pre, true
 	}
@@ -54,10 +54,10 @@ func helperValidBST(root *TreeNode, pre *int) (*int, bool) {
 	if pre, ok = helperValidBST(root.Left, pre); !ok {
 		return pre, false
 	}
-	if pre != nil && root.Val <= *pre {
+	if pre != nil && root.Val <= pre.Val {
 		return pre, false
 	}
-	pre = &root.Val
+	pre = root
 	if pre, ok = helperValidBST(root.Right, pre); !ok {
 		return pre, false
 	}
